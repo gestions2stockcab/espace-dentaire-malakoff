@@ -1,0 +1,6 @@
+# Redirections 301 conseillées (format Apache .htaccess)
+Redirect 301 /c/les-facettes-en-porcelaine-conventionnelles https://espace-dentaire-malakoff.fr/c/les-facettes/
+Redirect 301 /c/dentiste-malakoff-hauts-de-seine-92 https://espace-dentaire-malakoff.fr/
+Redirect 301 /c/videos-pedagogiques https://espace-dentaire-malakoff.fr/c/les-soins-dentaires/
+Redirect 301 /c/videos-vos-dents-tout-age https://espace-dentaire-malakoff.fr/c/les-soins-dentaires/
+Redirect 301 /node/9 https://espace-dentaire-malakoff.fr/c/mentions-legales-espace-dentaire-malakoff-dentiste/
