@@ -534,6 +534,8 @@ h1{font-weight:700;letter-spacing:-.035em}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
 @media print{.rv{opacity:1!important;transform:none!important}}
 @media(min-width:861px){.site-header{position:sticky;top:0}}
+.sur-titre{display:block;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--terra);margin-bottom:12px}
+.chapeau .sur-titre + h2:before{display:none}
 
 .membre .ph-m{width:104px;height:104px;border-radius:50%;object-fit:cover;display:block;box-shadow:0 0 0 4px rgba(251,246,238,.85),0 10px 24px rgba(70,45,10,.18)}
 .membre{align-items:flex-start}
