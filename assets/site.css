@@ -453,6 +453,8 @@ h2.suite{margin-top:56px}
 .sch-slide.on .mv-scrub{animation:schScrub 1.1s ease-in-out .5s 4 both}
 @keyframes schScrub{0%,100%{transform:translateX(0)}50%{transform:translateX(-46px)}}
 .lab-lt .lab text{fill:#fbf6ee}.lab-lt .lab path{stroke:#fbf6ee}.lab-lt .lab circle{fill:#fbf6ee}
+
+.sch .ot.mv-relapse{transform:none}
 .recept{padding:22px 22px 26px}.recept-lien{display:block;border-radius:16px;overflow:hidden;box-shadow:0 10px 26px rgba(47,103,255,.28);transition:transform .2s}.recept-lien:hover{transform:translateY(-2px)}.recept-logo{display:block;width:100%;height:auto}.recept small{margin-bottom:10px}.recept p{margin:14px 2px 0}
 .avis-mk .avis-carte{display:grid;grid-template-columns:auto 1fr;gap:32px 48px;align-items:center;padding:40px;border:1px solid var(--trait);border-radius:28px;background:var(--panneau)}
 .avis-mk .eyebrow{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ciel);margin-bottom:10px}
