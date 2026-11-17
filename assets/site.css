@@ -538,6 +538,15 @@ h1{font-weight:700;letter-spacing:-.035em}
 @media(min-width:861px){.site-header{position:sticky;top:0}}
 .sur-titre{display:block;font-size:13px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--terra);margin-bottom:12px}
 .chapeau .sur-titre + h2:before{display:none}
+.hyg-home{background:var(--nuit)}
+.hyg-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:40px;align-items:start}
+.hyg-list{list-style:none;margin:0;padding:0;counter-reset:h}
+.hyg-list li{counter-increment:h;display:grid;grid-template-columns:44px 1fr;gap:2px 14px;padding:16px 0;border-top:1px solid var(--trait)}
+.hyg-list li:first-child{border-top:0;padding-top:0}
+.hyg-list li:before{content:counter(h,decimal-leading-zero);grid-row:span 2;font-family:var(--serif);font-size:13px;font-weight:600;letter-spacing:.14em;color:var(--terra);padding-top:4px}
+.hyg-list b{font-family:var(--serif);font-size:19px;font-weight:600;color:var(--navy);letter-spacing:-.01em}
+.hyg-list span{font-size:15.5px;line-height:1.6}
+@media(max-width:860px){.hyg-grid{grid-template-columns:1fr;gap:28px}}
 
 .membre .ph-m{width:104px;height:104px;border-radius:50%;object-fit:cover;display:block;box-shadow:0 0 0 4px rgba(251,246,238,.85),0 10px 24px rgba(70,45,10,.18)}
 .membre{align-items:flex-start}
