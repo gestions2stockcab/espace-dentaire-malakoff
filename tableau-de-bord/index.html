@@ -103,7 +103,7 @@ footer{color:var(--faint);font-size:.78rem;margin-top:24px}
         <a href="https://espacedentairemalakoff.goatcounter.com" target="_blank" rel="noopener"><b>Visites en direct</b><span>GoatCounter, temps réel</span></a>
         <a href="https://github.com/gestions2stockcab/cabinet-dentaire-du-bourg/actions/workflows/stats.yml" target="_blank" rel="noopener"><b>Mettre à jour ce tableau</b><span>GitHub › Run workflow</span></a>
         <a href="https://business.google.com/" target="_blank" rel="noopener"><b>Fiche Google</b><span>Avis, photos, actualités</span></a>
-        <a href="https://search.google.com/search-console?resource_id=sc-domain%3Aespace-dentaire-malakoff.fr" target="_blank" rel="noopener"><b>Search Console</b><span>Référencement Google</span></a>
+        <a href="https://search.google.com/search-console?resource_id=sc-domain%3Aespacedentairemalakoff.fr" target="_blank" rel="noopener"><b>Search Console</b><span>Référencement Google</span></a>
         <a href="https://pro.doctolib.fr/" target="_blank" rel="noopener"><b>Doctolib Pro</b><span>Agenda et rendez-vous</span></a>
         <a href="https://github.com/gestions2stockcab/cabinet-dentaire-du-bourg/issues" target="_blank" rel="noopener"><b>Rapports et alertes</b><span>Rapport du lundi, vérifications</span></a>
       </div>
@@ -221,7 +221,7 @@ function render(d){DATA=d;var P=PL[PER];
 
   renderGbp(d);renderAvis(d);renderHours(d);renderEtat(d);
   var g=d.gsc||{};
-  if(g.error){$('#gsc-note').textContent='Les recherches Google se consultent directement dans la Search Console.';$('#gsc-body').innerHTML='<div class="links"><a href="https://search.google.com/search-console?resource_id=sc-domain%3Aespace-dentaire-malakoff.fr" target="_blank" rel="noopener"><b>Ouvrir la Search Console</b><span>Requêtes tapées, position, clics</span></a></div>';}
+  if(g.error){$('#gsc-note').textContent='Les recherches Google se consultent directement dans la Search Console.';$('#gsc-body').innerHTML='<div class="links"><a href="https://search.google.com/search-console?resource_id=sc-domain%3Aespacedentairemalakoff.fr" target="_blank" rel="noopener"><b>Ouvrir la Search Console</b><span>Requêtes tapées, position, clics</span></a></div>';}
   else{$('#gsc-note').textContent='28 jours, du '+g.start+' au '+g.end+' (Google a environ 3 jours de retard)';
     $('#gsc-body').innerHTML='<div class="kpis" style="margin-bottom:12px"><div class="kpi"><div class="k">Clics depuis Google</div><div class="v">'+fmt(g.clicks)+'</div></div><div class="kpi"><div class="k">Affichages</div><div class="v">'+fmt(g.impressions)+'</div></div><div class="kpi"><div class="k">Position moyenne</div><div class="v">'+(g.position?g.position.toFixed(1).replace('.',','):'–')+'</div></div></div>'
       +'<table>'+(g.queries||[]).map(function(q){return '<tr><td>'+esc(q.q)+'<br><small>position '+q.pos.toFixed(1).replace('.',',')+'</small></td><td class="n">'+fmt(q.clicks)+' clic'+(q.clicks>1?'s':'')+'<br><small>'+fmt(q.impr)+' affichages</small></td></tr>'}).join('')+'</table>';}
