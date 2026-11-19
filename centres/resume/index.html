@@ -20,6 +20,7 @@ table{width:100%;border-collapse:collapse;font-size:.85rem;margin:4px 0 10px}td{
 .lock input{width:100%;padding:12px 14px;border-radius:12px;border:1px solid #e3e7ef;font:500 1rem inherit;margin:10px 0}
 .lock button{font:600 .9rem/1 inherit;padding:12px 18px;border-radius:999px;border:0;background:#5b2bbf;color:#fff}
 .seg{display:inline-flex;gap:4px;padding:4px;border:1px solid #e3e7ef;border-radius:999px;background:#fff;margin:0 0 16px}.seg a{padding:9px 16px;border-radius:999px;color:#3d4656;text-decoration:none;font-weight:600;font-size:.88rem}.seg a[aria-current]{background:var(--c);color:#fff}
+.rdv{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;align-items:end;margin:0 0 14px;padding:12px;border-radius:14px;background:#f4f0ff;border:1px dashed #b9a6ec}.rdv label{font-size:.8rem;font-weight:600;color:#3d4656}.rdv label small{font-weight:400;color:#5b6474}.rdv input{display:block;width:100%;margin-top:6px;padding:10px 12px;border-radius:10px;border:1px solid #d9d0f5;font:600 1.05rem inherit;background:#fff}.rdv .k{background:#fff}@media(max-width:700px){.rdv{grid-template-columns:1fr 1fr}.rdv .k{grid-column:1/3}}@media print{.rdv{background:#fff;border:1px solid #e3e7ef}.rdv input{border:0;padding:0;margin-top:2px}.rdv input:placeholder-shown{color:transparent}}
 .msg{color:#d14a3f;font-size:.85rem;min-height:1.2em;margin-top:8px}.err{color:#d14a3f;font-size:.85rem}
 @media(max-width:700px){.tot{grid-template-columns:repeat(2,minmax(0,1fr))}.two{grid-template-columns:1fr}}
 @media print{@page{size:A4;margin:12mm}body{background:#fff;font-size:12px}.bar,.lock,.seg{display:none!important}.wrap{padding:0}.k,.ct{box-shadow:none;border:1px solid #e3e7ef}
@@ -32,7 +33,7 @@ table{width:100%;border-collapse:collapse;font-size:.85rem;margin:4px 0 10px}td{
 <h1 id="ti">Résumé de la semaine</h1><p class="sub" id="per"></p><div class="seg" id="seg"></div>
 <div class="bar"><button type="button" onclick="print()">Enregistrer en PDF</button></div>
 <div id="list"></div>
-<p class="sub" style="font-size:.78rem">Visiteurs uniques du site (GoatCounter, sans cookies) · clics sur « Prendre rendez-vous » Doctolib et sur le numéro de téléphone · fiche Google : Google publie avec quelques jours de retard. Comparaison avec les 7 jours précédents.</p>
+<p class="sub" style="font-size:.78rem">Visiteurs uniques du site (GoatCounter, sans cookies) · clics sur « Prendre rendez-vous » Doctolib et sur le numéro de téléphone · fiche Google : Google publie avec quelques jours de retard. Comparaison avec les 7 jours précédents. Le nombre de RDV Doctolib est saisi à la main et reste mémorisé sur cet appareil.</p>
 </div></div>
 <script>
 (function(){
@@ -67,17 +68,26 @@ async function go(pw){$('#msg').textContent='Ouverture…';
  var R=await Promise.all(C.map(function(c){return dec(c.u,pw).then(function(d){return live(d).then(function(){return d})}).catch(function(e){return {err:e}})}));
  if(R.every(function(r){return r.err})){$('#msg').textContent=R[0].err.message==='none'?'Statistiques indisponibles pour ce centre.':'Mot de passe incorrect.';$('#lock').hidden=false;return;}
  $('#lock').hidden=true;$('#res').hidden=false;$('#ti').textContent='Résumé de la semaine · '+CC.nom;$('#per').textContent='Du '+fr(A)+' au '+fr(B);
- var T={vis:0,pvis:0,doc:0,pdoc:0,tel:0,ptel:0},h='';
+ var T={vis:0,pvis:0,doc:0,pdoc:0,tel:0,ptel:0},h='',SDOC=0;
  R.forEach(function(d,i){var c=C[i];h+='<section class="ct" style="--c:'+c.c+';--t:'+c.t+'"><h2><i></i>'+c.nom+'</h2>';
   if(d.err){h+='<p class="err">Données indisponibles.</p></section>';return;}
   var s=stats(d);['vis','pvis','doc','pdoc','tel','ptel'].forEach(function(x){T[x]+=s[x]});
   var ct=s.doc+s.tel,rate=s.vis?(ct/s.vis*100).toFixed(1).replace('.',',')+' %':'—';
   h+='<div class="tot">'+k('Visiteurs',fmt(s.vis),dl(s.vis,s.pvis),'#3b6ef5')+k('Clics Doctolib',fmt(s.doc),dl(s.doc,s.pdoc),'#e0457b')+k('Clics téléphone',fmt(s.tel),dl(s.tel,s.ptel),'#e08a1e')+k('Taux de contact',rate,'','#178a62')+'</div>';
+  SDOC=s.doc;h+='<div class="rdv"><label>RDV Doctolib de la semaine<input id="rdv" type="number" min="0" inputmode="numeric" placeholder="à saisir"></label>'
+   +'<label>dont nouveaux patients<input id="rdvn" type="number" min="0" inputmode="numeric" placeholder="facultatif"></label><div class="k" style="--c:#5b2bbf"><small>Clics Doctolib → RDV</small><b id="rdvt">—</b><span class="d eq" id="rdvd">saisissez le nombre de RDV</span></div></div>';
   if(s.g||s.av){h+='<div class="tot">';if(s.g){h+=k('Vues fiche Google',fmt(s.g.vues),dl(s.g.vues,s.g.pv),'#7a4fd6')+k('Appels depuis Google',fmt(s.g.appels),dl(s.g.appels,s.g.pa),'#0e8fa3')+k('Itinéraires',fmt(s.g.itin),dl(s.g.itin,s.g.pi),'#b0661e');}
    if(s.av)h+=k('Avis Google','★ '+String(s.av.note).replace('.',','),'<span class="d eq">'+fmt(s.av.total)+' avis · '+s.av.n+' nouveau'+(s.av.n>1?'x':'')+'</span>','#e8b33a');h+='</div>';}
   h+='<div class="two"><div><h3>Pages les plus vues</h3><table>'+(s.pages.map(function(p){return '<tr><td>'+esc((p.title||p.path).replace(/ ?[|–-] (Cabinet Dentaire du Bourg|Espace dentaire \w+).*$/,''))+'</td><td class="n">'+fmt(p.n)+'</td></tr>'}).join('')||'<tr><td>—</td></tr>')+'</table></div>'
    +'<div><h3>D’où viennent les visiteurs</h3><table>'+(s.refs.map(function(r){return '<tr><td>'+esc(r.name==='(direct)'||!r.name?'Accès direct / favoris':r.name)+'</td><td class="n">'+fmt(r.n)+'</td></tr>'}).join('')||'<tr><td>—</td></tr>')+'</table></div></div></section>';});
  $('#list').innerHTML=h;
+ var key='rdv_'+CC.k+'_'+A,pkey='rdv_'+CC.k+'_'+PA,ld=function(x){try{return JSON.parse(localStorage.getItem(x)||'null')}catch(e){return null}};
+ function upd(){var r=parseInt($('#rdv').value,10),n=parseInt($('#rdvn').value,10);try{localStorage.setItem(key,JSON.stringify({r:isNaN(r)?null:r,n:isNaN(n)?null:n}))}catch(e){}
+  if(isNaN(r)){$('#rdvt').textContent='—';$('#rdvd').textContent='saisissez le nombre de RDV';return;}
+  var pv=ld(pkey);$('#rdvt').textContent=SDOC?Math.round(r/SDOC*100)+' %':'—';
+  $('#rdvd').innerHTML=fmt(r)+' RDV pour '+fmt(SDOC)+' clics'+(isNaN(n)?'':' · '+fmt(n)+' nouveaux patients')+(pv&&pv.r!=null?' · semaine d’avant : '+fmt(pv.r)+' RDV':'');}
+ var sv=ld(key);if(sv){if(sv.r!=null)$('#rdv').value=sv.r;if(sv.n!=null)$('#rdvn').value=sv.n;}
+ $('#rdv').addEventListener('input',upd);$('#rdvn').addEventListener('input',upd);upd();
  try{localStorage.setItem('dbk_'+CC.k,pw);localStorage.setItem('dbk',pw);sessionStorage.setItem('dbk',pw)}catch(e){}}
 $('#lock').addEventListener('submit',function(e){e.preventDefault();go($('#pw').value);});
 var s=null;try{s=localStorage.getItem('dbk_'+CC.k)||localStorage.getItem('dbk')||sessionStorage.getItem('dbk')}catch(e){}
