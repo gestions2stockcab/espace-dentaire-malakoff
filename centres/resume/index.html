@@ -19,18 +19,19 @@ table{width:100%;border-collapse:collapse;font-size:.85rem;margin:4px 0 10px}td{
 .lock{max-width:380px;margin:10vh auto;padding:28px;border-radius:20px;background:#fff;box-shadow:0 6px 18px rgba(20,30,50,.08)}
 .lock input{width:100%;padding:12px 14px;border-radius:12px;border:1px solid #e3e7ef;font:500 1rem inherit;margin:10px 0}
 .lock button{font:600 .9rem/1 inherit;padding:12px 18px;border-radius:999px;border:0;background:#5b2bbf;color:#fff}
+.seg{display:inline-flex;gap:4px;padding:4px;border:1px solid #e3e7ef;border-radius:999px;background:#fff;margin:0 0 16px}.seg a{padding:9px 16px;border-radius:999px;color:#3d4656;text-decoration:none;font-weight:600;font-size:.88rem}.seg a[aria-current]{background:var(--c);color:#fff}
 .msg{color:#d14a3f;font-size:.85rem;min-height:1.2em;margin-top:8px}.err{color:#d14a3f;font-size:.85rem}
 @media(max-width:700px){.tot{grid-template-columns:repeat(2,minmax(0,1fr))}.two{grid-template-columns:1fr}}
-@media print{@page{size:A4;margin:12mm}body{background:#fff;font-size:12px}.bar,.lock{display:none!important}.wrap{padding:0}.k,.ct{box-shadow:none;border:1px solid #e3e7ef}
+@media print{@page{size:A4;margin:12mm}body{background:#fff;font-size:12px}.bar,.lock,.seg{display:none!important}.wrap{padding:0}.k,.ct{box-shadow:none;border:1px solid #e3e7ef}
  .k b{font-size:1.35rem}.ct{border-left:6px solid var(--c);padding:12px 14px 4px;margin:0 0 10px}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
 </style></head><body><nav class="centres" aria-label="Centres"><a href="../savigny/" style="--c:#2f67ff"><i></i>Savigny</a><a href="../malakoff/" style="--c:#8b5e34"><i></i>Malakoff</a><a href="../boissy/" style="--c:#178a62"><i></i>Boissy</a><a class="res" href="../resume/" aria-current="page">Résumé</a></nav>
 <div class="wrap">
 <form class="lock" id="lock" hidden><h1 style="font-size:1.3rem">Résumé de la semaine</h1><p class="sub">Tapez le mot de passe commun.</p>
 <input type="password" id="pw" autocomplete="current-password" aria-label="Mot de passe"><button>Ouvrir</button><div class="msg" id="msg"></div></form>
 <div id="res" hidden>
-<h1>Résumé de la semaine</h1><p class="sub" id="per"></p>
+<h1 id="ti">Résumé de la semaine</h1><p class="sub" id="per"></p><div class="seg" id="seg"></div>
 <div class="bar"><button type="button" onclick="print()">Enregistrer en PDF</button></div>
-<div class="tot" id="all"></div><div id="list"></div>
+<div id="list"></div>
 <p class="sub" style="font-size:.78rem">Visiteurs uniques du site (GoatCounter, sans cookies) · clics sur « Prendre rendez-vous » Doctolib et sur le numéro de téléphone · fiche Google : Google publie avec quelques jours de retard. Comparaison avec les 7 jours précédents.</p>
 </div></div>
 <script>
@@ -61,13 +62,14 @@ function stats(d){var ev=d.events_daily||{},doc=ev.doctolib,tel=ev.tel;
  var a=d.avis||{};if(!a.error&&a.total){var nw=(a.dates||[]).filter(function(x){return x[0]>=A&&x[0]<=B});o.av={note:a.note,total:a.total,n:nw.length};}
  var b=(d.by||{}).s||{};o.pages=(b.pages||[]).slice(0,5);o.refs=(b.toprefs||[]).slice(0,4);return o;}
 function k(lbl,v,dd,c){return '<div class="k" style="--c:'+c+'"><small>'+lbl+'</small><b>'+v+'</b>'+(dd||'')+'</div>';}
+var q=(location.search.match(/c=([a-z]+)/)||[])[1];if(!q)try{q=localStorage.getItem('centre')}catch(e){}var CC=C.filter(function(c){return c.k===q})[0]||C[0];$('#seg').innerHTML=C.map(function(c){return '<a href="?c='+c.k+'" style="--c:'+c.c+'"'+(c===CC?' aria-current="page"':'')+'>'+c.n+'</a>'}).join('');try{localStorage.setItem('centre',CC.k)}catch(e){}document.title='Résumé '+CC.n+' – semaine';C=[CC];
 async function go(pw){$('#msg').textContent='Ouverture…';
  var R=await Promise.all(C.map(function(c){return dec(c.u,pw).then(function(d){return live(d).then(function(){return d})}).catch(function(e){return {err:e}})}));
- if(R.every(function(r){return r.err})){$('#msg').textContent='Mot de passe incorrect.';try{localStorage.removeItem('dbk')}catch(e){}$('#lock').hidden=false;return;}
- $('#lock').hidden=true;$('#res').hidden=false;$('#per').textContent='Du '+fr(A)+' au '+fr(B)+' · '+C.map(function(c){return c.n}).join(', ');
+ if(R.every(function(r){return r.err})){$('#msg').textContent=R[0].err.message==='none'?'Statistiques indisponibles pour ce centre.':'Mot de passe incorrect.';try{localStorage.removeItem('dbk')}catch(e){}$('#lock').hidden=false;return;}
+ $('#lock').hidden=true;$('#res').hidden=false;$('#ti').textContent='Résumé de la semaine · '+CC.nom;$('#per').textContent='Du '+fr(A)+' au '+fr(B);
  var T={vis:0,pvis:0,doc:0,pdoc:0,tel:0,ptel:0},h='';
  R.forEach(function(d,i){var c=C[i];h+='<section class="ct" style="--c:'+c.c+';--t:'+c.t+'"><h2><i></i>'+c.nom+'</h2>';
-  if(d.err){h+='<p class="err">Données indisponibles pour ce centre (mot de passe différent ?).</p></section>';return;}
+  if(d.err){h+='<p class="err">Données indisponibles.</p></section>';return;}
   var s=stats(d);['vis','pvis','doc','pdoc','tel','ptel'].forEach(function(x){T[x]+=s[x]});
   var ct=s.doc+s.tel,rate=s.vis?(ct/s.vis*100).toFixed(1).replace('.',',')+' %':'—';
   h+='<div class="tot">'+k('Visiteurs',fmt(s.vis),dl(s.vis,s.pvis),'#3b6ef5')+k('Clics Doctolib',fmt(s.doc),dl(s.doc,s.pdoc),'#e0457b')+k('Clics téléphone',fmt(s.tel),dl(s.tel,s.ptel),'#e08a1e')+k('Taux de contact',rate,'','#178a62')+'</div>';
@@ -75,7 +77,6 @@ async function go(pw){$('#msg').textContent='Ouverture…';
    if(s.av)h+=k('Avis Google','★ '+String(s.av.note).replace('.',','),'<span class="d eq">'+fmt(s.av.total)+' avis · '+s.av.n+' nouveau'+(s.av.n>1?'x':'')+'</span>','#e8b33a');h+='</div>';}
   h+='<div class="two"><div><h3>Pages les plus vues</h3><table>'+(s.pages.map(function(p){return '<tr><td>'+esc((p.title||p.path).replace(/ ?[|–-] (Cabinet Dentaire du Bourg|Espace dentaire \w+).*$/,''))+'</td><td class="n">'+fmt(p.n)+'</td></tr>'}).join('')||'<tr><td>—</td></tr>')+'</table></div>'
    +'<div><h3>D’où viennent les visiteurs</h3><table>'+(s.refs.map(function(r){return '<tr><td>'+esc(r.name==='(direct)'||!r.name?'Accès direct / favoris':r.name)+'</td><td class="n">'+fmt(r.n)+'</td></tr>'}).join('')||'<tr><td>—</td></tr>')+'</table></div></div></section>';});
- var tc=T.doc+T.tel;$('#all').innerHTML=k('Visiteurs · 3 centres',fmt(T.vis),dl(T.vis,T.pvis),'#3b6ef5')+k('Clics Doctolib',fmt(T.doc),dl(T.doc,T.pdoc),'#e0457b')+k('Clics téléphone',fmt(T.tel),dl(T.tel,T.ptel),'#e08a1e')+k('Taux de contact',T.vis?(tc/T.vis*100).toFixed(1).replace('.',',')+' %':'—','','#178a62');
  $('#list').innerHTML=h;
  try{sessionStorage.setItem('dbk',pw)}catch(e){}}
 $('#lock').addEventListener('submit',function(e){e.preventDefault();go($('#pw').value);});
