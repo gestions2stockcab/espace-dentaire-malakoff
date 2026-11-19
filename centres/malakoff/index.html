@@ -154,13 +154,13 @@ async function go(pw,remember){
   $('#msg').textContent='Ouverture…';
   try{var d=await unlock(pw);}catch(err){
     $('#msg').textContent=err.message==='none'?'Les statistiques ne sont pas encore disponibles (première mise à jour automatique en attente).':(err.name==='OperationError'?'Mot de passe incorrect (il doit être identique au secret STATS_KEY sur GitHub, majuscules comprises).':'Erreur : '+err.message);
-    store('dbk',null);return;}
-  if(remember)store('dbk',pw);try{sessionStorage.setItem('dbk',pw)}catch(e){}
+    $('#lock').hidden=false;return;}
+  store('dbk',pw);store('dbk_malakoff',pw);try{sessionStorage.setItem('dbk',pw)}catch(e){}
   $('#lock').hidden=true;$('#dash').hidden=false;$('#out').hidden=false;render(d);live(d);setInterval(function(){live(d)},300000);var rw;addEventListener('resize',function(){clearTimeout(rw);rw=setTimeout(function(){render(d)},200)});
 }
 $('#lock').addEventListener('submit',function(e){e.preventDefault();go($('#pw').value,$('#rem').checked);});
-$('#out').addEventListener('click',function(){store('dbk',null);try{sessionStorage.removeItem('dbk')}catch(e){}location.reload();});
-var saved=read('dbk');if(!saved)try{saved=sessionStorage.getItem('dbk')}catch(e){}try{localStorage.setItem('centre','malakoff')}catch(e){}if(saved)go(saved,true);
+$('#out').addEventListener('click',function(){store('dbk',null);store('dbk_malakoff',null);location.reload();});
+var saved=read('dbk_malakoff')||read('dbk');if(!saved)try{saved=sessionStorage.getItem('dbk')}catch(e){}try{localStorage.setItem('centre','malakoff')}catch(e){}if(saved)go(saved,true);
 
 var PER=read('dbper')||'j',DATA=null;
 var PL={h:{k:'Hier',vs:'vs avant-hier',pl:'Avant-hier',n:1,off:1,tab:'hier',h1:'Visiteurs par jour',n1:'90 derniers jours',h2:'Prises de contact par jour',n2:'30 derniers jours'},

@@ -65,7 +65,7 @@ function k(lbl,v,dd,c){return '<div class="k" style="--c:'+c+'"><small>'+lbl+'</
 var q=(location.search.match(/c=([a-z]+)/)||[])[1];if(!q)try{q=localStorage.getItem('centre')}catch(e){}var CC=C.filter(function(c){return c.k===q})[0]||C[0];$('#seg').innerHTML=C.map(function(c){return '<a href="?c='+c.k+'" style="--c:'+c.c+'"'+(c===CC?' aria-current="page"':'')+'>'+c.n+'</a>'}).join('');try{localStorage.setItem('centre',CC.k)}catch(e){}document.title='Résumé '+CC.n+' – semaine';C=[CC];
 async function go(pw){$('#msg').textContent='Ouverture…';
  var R=await Promise.all(C.map(function(c){return dec(c.u,pw).then(function(d){return live(d).then(function(){return d})}).catch(function(e){return {err:e}})}));
- if(R.every(function(r){return r.err})){$('#msg').textContent=R[0].err.message==='none'?'Statistiques indisponibles pour ce centre.':'Mot de passe incorrect.';try{localStorage.removeItem('dbk')}catch(e){}$('#lock').hidden=false;return;}
+ if(R.every(function(r){return r.err})){$('#msg').textContent=R[0].err.message==='none'?'Statistiques indisponibles pour ce centre.':'Mot de passe incorrect.';$('#lock').hidden=false;return;}
  $('#lock').hidden=true;$('#res').hidden=false;$('#ti').textContent='Résumé de la semaine · '+CC.nom;$('#per').textContent='Du '+fr(A)+' au '+fr(B);
  var T={vis:0,pvis:0,doc:0,pdoc:0,tel:0,ptel:0},h='';
  R.forEach(function(d,i){var c=C[i];h+='<section class="ct" style="--c:'+c.c+';--t:'+c.t+'"><h2><i></i>'+c.nom+'</h2>';
@@ -78,9 +78,9 @@ async function go(pw){$('#msg').textContent='Ouverture…';
   h+='<div class="two"><div><h3>Pages les plus vues</h3><table>'+(s.pages.map(function(p){return '<tr><td>'+esc((p.title||p.path).replace(/ ?[|–-] (Cabinet Dentaire du Bourg|Espace dentaire \w+).*$/,''))+'</td><td class="n">'+fmt(p.n)+'</td></tr>'}).join('')||'<tr><td>—</td></tr>')+'</table></div>'
    +'<div><h3>D’où viennent les visiteurs</h3><table>'+(s.refs.map(function(r){return '<tr><td>'+esc(r.name==='(direct)'||!r.name?'Accès direct / favoris':r.name)+'</td><td class="n">'+fmt(r.n)+'</td></tr>'}).join('')||'<tr><td>—</td></tr>')+'</table></div></div></section>';});
  $('#list').innerHTML=h;
- try{sessionStorage.setItem('dbk',pw)}catch(e){}}
+ try{localStorage.setItem('dbk_'+CC.k,pw);localStorage.setItem('dbk',pw);sessionStorage.setItem('dbk',pw)}catch(e){}}
 $('#lock').addEventListener('submit',function(e){e.preventDefault();go($('#pw').value);});
-var s=null;try{s=localStorage.getItem('dbk')||sessionStorage.getItem('dbk')}catch(e){}
+var s=null;try{s=localStorage.getItem('dbk_'+CC.k)||localStorage.getItem('dbk')||sessionStorage.getItem('dbk')}catch(e){}
 if(s)go(s);else $('#lock').hidden=false;
 })();
 </script></body></html>
