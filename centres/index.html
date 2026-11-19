@@ -1,0 +1,25 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow"><title>Mes centres</title>
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Mes centres">
+<meta name="theme-color" content="#0a0f1c">
+<style>
+:root{color-scheme:dark}*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:#0a0f1c;font:600 15px/1 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+nav{position:fixed;top:0;left:0;right:0;z-index:2;display:flex;gap:6px;padding:calc(env(safe-area-inset-top,0px) + 10px) 12px 10px;background:rgba(10,15,28,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid #223049}
+nav button{flex:1;min-height:42px;border:1px solid #223049;border-radius:999px;background:transparent;color:#9fb0cc;font:inherit;cursor:pointer}
+nav button[aria-pressed="true"]{background:#e8eefc;color:#0a0f1c;border-color:#e8eefc}
+.f{position:fixed;left:0;right:0;bottom:0;top:calc(env(safe-area-inset-top,0px) + 63px);width:100%;height:calc(100% - env(safe-area-inset-top,0px) - 63px);border:0;display:none;background:#0a0f1c}
+.f.on{display:block}
+</style></head><body>
+<nav aria-label="Centres"><button type="button" data-k="savigny" data-u="https://www.cabinetdentairedubourg.fr/tableau-de-bord/">Savigny</button><button type="button" data-k="malakoff" data-u="https://www.espacedentairemalakoff.fr/tableau-de-bord/">Malakoff</button><button type="button" data-k="boissy" data-u="https://espacedentaireboissy.fr/tableau-de-bord/">Boissy</button></nav>
+<script>
+(function(){var B=[].slice.call(document.querySelectorAll('nav button')),F={};
+function show(k){B.forEach(function(b){var on=b.dataset.k===k;b.setAttribute('aria-pressed',on);
+ if(on&&!F[k]){var f=document.createElement('iframe');f.className='f';f.src=b.dataset.u;f.title='Tableau de bord '+b.textContent;document.body.appendChild(f);F[k]=f;}
+ if(F[b.dataset.k])F[b.dataset.k].classList.toggle('on',on);});
+ try{localStorage.setItem('centre',k)}catch(e){} if(location.hash.slice(1)!==k)history.replaceState(null,'','#'+k);}
+B.forEach(function(b){b.onclick=function(){show(b.dataset.k)}});
+var k=location.hash.slice(1);try{k=k||localStorage.getItem('centre')}catch(e){}
+show(B.some(function(b){return b.dataset.k===k})?k:'savigny');})();
+</script></body></html>
