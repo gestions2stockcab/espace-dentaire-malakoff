@@ -593,6 +593,20 @@ body{color:var(--texte)}
 .carte:hover{background:#fff}
 .urgence{background:linear-gradient(120deg,#EBDFCC,#E2CFB0)!important}
 .soins-fond .carte,.cp-home .carte{min-height:0!important;padding-bottom:44px!important}
+/* photos en fond, plus présentes (19/11) */
+section.soins-fond{background:linear-gradient(180deg,rgba(243,234,219,.97) 0%,rgba(243,234,219,.78) 30%,rgba(243,234,219,.5) 100%),var(--ph2) center 65%/cover!important}
+.hyg-home{background:linear-gradient(90deg,rgba(243,234,219,.6) 0%,rgba(243,234,219,.86) 45%,rgba(243,234,219,.93) 100%),var(--ph3) center 70%/cover!important}
+.cp-home{background:linear-gradient(180deg,rgba(243,234,219,.95) 0%,rgba(234,221,199,.66) 35%,rgba(234,221,199,.45) 100%),var(--ph4) center 35%/cover!important}
+.bas{background:linear-gradient(180deg,rgba(243,234,219,.96) 0%,rgba(243,234,219,.7) 30%,rgba(234,221,199,.55) 100%),var(--ph1) center 70%/cover!important}
+.urgence{background:linear-gradient(110deg,rgba(43,30,21,.9) 0%,rgba(43,30,21,.7) 55%,rgba(43,30,21,.35) 100%),var(--ph2) center 55%/cover!important;color:#FBF6EE!important;box-shadow:0 20px 50px rgba(43,30,21,.25)}
+.urgence h2{color:#FBF6EE!important}.urgence p{color:#EBDFCC!important}
+.urgence .btn{background:#FBF6EE!important;color:#4A3426!important}
+.fond-equipe{background:linear-gradient(90deg,rgba(43,30,21,.25),rgba(43,30,21,0) 60%),var(--ph3) center 55%/cover!important}
+.hyg-home .hyg-list li{background:rgba(251,246,238,.55);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-radius:16px;padding:14px 18px!important;border:1px solid rgba(255,250,240,.5)}
+.hyg-home .hyg-list{display:grid;gap:10px}
+.hyg-home .hyg-sch .sch,.hyg-home .hyg-sch>div{border-radius:22px}
+@media (min-width:861px) and (hover:hover){.hyg-home,.urgence{background-attachment:fixed!important}}
+@media(max-width:860px){.hyg-home{background:linear-gradient(180deg,rgba(243,234,219,.92),rgba(243,234,219,.85)),var(--ph3) center 70%/cover!important}}
 /* galerie */
 .galerie-mk{padding:88px 0}
 .galerie-mk .g-tete{margin-bottom:28px}
