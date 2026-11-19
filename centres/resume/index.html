@@ -1,0 +1,85 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex, nofollow">
+<title>Résumé de la semaine – Mes centres</title><meta name="theme-color" content="#ffffff">
+<style>.centres{position:sticky;top:0;z-index:20;display:flex;gap:6px;padding:calc(env(safe-area-inset-top,0px) + 10px) 12px 10px;background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom:1px solid #e3e7ef}.centres a{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;min-height:42px;border:1px solid #e3e7ef;border-radius:999px;color:#3d4656;background:#fff;text-decoration:none;font:600 14.5px/1 Manrope,-apple-system,sans-serif}.centres a i{width:9px;height:9px;border-radius:50%;background:var(--c)}.centres a[aria-current]{background:var(--c);color:#fff;border-color:var(--c)}.centres a[aria-current] i{background:#fff}.centres a.res{flex:0 0 auto;padding:0 14px;--c:#5b2bbf}@media print{.centres{display:none}}
+*{box-sizing:border-box}body{margin:0;background:#f5f7fb;color:#151b26;font:400 15px/1.5 Manrope,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.wrap{max-width:980px;margin:0 auto;padding:26px 16px 60px}
+h1{font-size:clamp(1.5rem,3.4vw,2.1rem);letter-spacing:-.03em;margin:0 0 4px}.sub{color:#5b6474;margin:0 0 20px}
+.bar{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 22px}
+.bar button{font:600 .9rem/1 inherit;padding:12px 18px;border-radius:999px;border:0;background:#5b2bbf;color:#fff;cursor:pointer}
+.tot{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:0 0 18px}
+.k{border-radius:16px;padding:14px 16px;background:#fff;border-top:4px solid var(--c);box-shadow:0 1px 2px rgba(20,30,50,.05),0 6px 18px rgba(20,30,50,.05)}
+.k small{display:block;color:#5b6474;font-size:.78rem}.k b{display:block;font-size:1.7rem;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.d{font-size:.78rem;font-weight:600}.up{color:#178a62}.down{color:#d14a3f}.eq{color:#5b6474}
+.ct{border-radius:18px;background:#fff;padding:18px 18px 8px;margin:0 0 14px;box-shadow:0 1px 2px rgba(20,30,50,.05),0 6px 18px rgba(20,30,50,.05);border-left:6px solid var(--c);break-inside:avoid}
+.ct h2{margin:0 0 12px;font-size:1.15rem;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}.ct h2 i{width:10px;height:10px;border-radius:50%;background:var(--c)}
+.ct .tot .k{background:var(--t);box-shadow:none}
+table{width:100%;border-collapse:collapse;font-size:.85rem;margin:4px 0 10px}td{padding:6px 0;border-top:1px solid #e3e7ef}td.n{text-align:right;font-variant-numeric:tabular-nums;padding-left:10px;white-space:nowrap}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}.two h3{font-size:.85rem;color:#5b6474;margin:6px 0 0;font-weight:600}
+.lock{max-width:380px;margin:10vh auto;padding:28px;border-radius:20px;background:#fff;box-shadow:0 6px 18px rgba(20,30,50,.08)}
+.lock input{width:100%;padding:12px 14px;border-radius:12px;border:1px solid #e3e7ef;font:500 1rem inherit;margin:10px 0}
+.lock button{font:600 .9rem/1 inherit;padding:12px 18px;border-radius:999px;border:0;background:#5b2bbf;color:#fff}
+.msg{color:#d14a3f;font-size:.85rem;min-height:1.2em;margin-top:8px}.err{color:#d14a3f;font-size:.85rem}
+@media(max-width:700px){.tot{grid-template-columns:repeat(2,minmax(0,1fr))}.two{grid-template-columns:1fr}}
+@media print{@page{size:A4;margin:12mm}body{background:#fff;font-size:12px}.bar,.lock{display:none!important}.wrap{padding:0}.k,.ct{box-shadow:none;border:1px solid #e3e7ef}
+ .k b{font-size:1.35rem}.ct{border-left:6px solid var(--c);padding:12px 14px 4px;margin:0 0 10px}*{-webkit-print-color-adjust:exact;print-color-adjust:exact}}
+</style></head><body><nav class="centres" aria-label="Centres"><a href="../savigny/" style="--c:#2f67ff"><i></i>Savigny</a><a href="../malakoff/" style="--c:#8b5e34"><i></i>Malakoff</a><a href="../boissy/" style="--c:#178a62"><i></i>Boissy</a><a class="res" href="../resume/" aria-current="page">Résumé</a></nav>
+<div class="wrap">
+<form class="lock" id="lock" hidden><h1 style="font-size:1.3rem">Résumé de la semaine</h1><p class="sub">Tapez le mot de passe commun.</p>
+<input type="password" id="pw" autocomplete="current-password" aria-label="Mot de passe"><button>Ouvrir</button><div class="msg" id="msg"></div></form>
+<div id="res" hidden>
+<h1>Résumé de la semaine</h1><p class="sub" id="per"></p>
+<div class="bar"><button type="button" onclick="print()">Enregistrer en PDF</button></div>
+<div class="tot" id="all"></div><div id="list"></div>
+<p class="sub" style="font-size:.78rem">Visiteurs uniques du site (GoatCounter, sans cookies) · clics sur « Prendre rendez-vous » Doctolib et sur le numéro de téléphone · fiche Google : Google publie avec quelques jours de retard. Comparaison avec les 7 jours précédents.</p>
+</div></div>
+<script>
+(function(){
+var C=[{"k": "savigny", "n": "Savigny", "nom": "Cabinet Dentaire du Bourg", "u": "https://www.cabinetdentairedubourg.fr/stats.enc.json", "c": "#2f67ff", "t": "#eaf0ff"}, {"k": "malakoff", "n": "Malakoff", "nom": "Espace dentaire Malakoff", "u": "https://www.cabinetdentairedubourg.fr/stats-malakoff.enc.json", "c": "#8b5e34", "t": "#f6ede2"}, {"k": "boissy", "n": "Boissy", "nom": "Espace dentaire Boissy", "u": "https://espacedentaireboissy.fr/stats.enc.json", "c": "#178a62", "t": "#e5f5ee"}];
+var $=function(s){return document.querySelector(s)},fmt=function(n){return (n||0).toLocaleString('fr-FR')};
+function b64(s){var b=atob(s),u=new Uint8Array(b.length);for(var i=0;i<b.length;i++)u[i]=b.charCodeAt(i);return u;}
+async function dec(url,pw){var r=await fetch(url+'?'+Date.now(),{cache:'no-store'});if(!r.ok)throw new Error('none');var e=await r.json();
+ var base=await crypto.subtle.importKey('raw',new TextEncoder().encode(String(pw).normalize('NFC').trim()),'PBKDF2',false,['deriveKey']);
+ var key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b64(e.salt),iterations:e.it,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['decrypt']);
+ return JSON.parse(new TextDecoder().decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:b64(e.iv)},key,b64(e.ct))));}
+async function live(d){var g=d.gc;if(!g||!g.token)return;try{var H={headers:{'Authorization':'Bearer '+g.token}};var t=new Date(),e=new Date(t.getTime()+864e5),st=new Date(t.getTime()-40*864e5),iso=function(x){return x.toISOString().slice(0,10)+'T00:00:00Z'};var q='start='+iso(st)+'&end='+iso(e);
+ var tot=await (await fetch(g.base+'/stats/total?'+q,H)).json();var hs=await (await fetch(g.base+'/stats/hits?'+q+'&limit=50&group=day',H)).json();if(!tot.stats)return;
+ d.daily=tot.stats.map(function(x){return {d:x.day,v:x.daily||0}});var ev=function(n){var h=(hs.hits||[]).filter(function(x){return x.event&&x.path===n})[0];return h?(h.stats||[]).map(function(x){return {d:x.day,v:x.daily||0}}):[]};
+ d.events_daily={doctolib:ev('Clic Doctolib'),tel:ev('Clic téléphone')};}catch(err){}}
+function ymd(t){return t.toLocaleDateString('sv-SE');}
+var T=new Date();T.setHours(12);var end=new Date(T);end.setDate(end.getDate()-1);var st=new Date(end);st.setDate(st.getDate()-6);var pst=new Date(st);pst.setDate(pst.getDate()-7);var pend=new Date(st);pend.setDate(pend.getDate()-1);
+var A=ymd(st),B=ymd(end),PA=ymd(pst),PB=ymd(pend);
+function rng(a,x,y,k){return (a||[]).filter(function(o){return o.d>=x&&o.d<=y}).reduce(function(s,o){return s+(o[k||'v']||0)},0);}
+function dl(c,p){if(!p)return c?'<span class="d up">nouveau</span>':'<span class="d eq">=</span>';var x=Math.round((c-p)/p*100);return '<span class="d '+(x>0?'up':x<0?'down':'eq')+'">'+(x>0?'▲ +':x<0?'▼ ':'= ')+(x||'')+(x?' %':'')+'</span> <span class="d eq">('+fmt(p)+')</span>';}
+function fr(s){return new Date(s+'T12:00:00').toLocaleDateString('fr-FR',{day:'numeric',month:'long'});}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function stats(d){var ev=d.events_daily||{},doc=ev.doctolib,tel=ev.tel;
+ var o={vis:rng(d.daily,A,B),pvis:rng(d.daily,PA,PB),doc:rng(doc,A,B),pdoc:rng(doc,PA,PB),tel:rng(tel,A,B),ptel:rng(tel,PA,PB)};
+ o.vis=Math.max(0,o.vis-o.doc-o.tel);o.pvis=Math.max(0,o.pvis-o.pdoc-o.ptel);
+ var g=d.gbp||{};if(!g.error&&(g.daily||[]).length){var S=g.daily,n=S.length,cur=S.slice(Math.max(0,n-7)),prv=S.slice(Math.max(0,n-14),Math.max(0,n-7));
+  var sm=function(a,k){return a.reduce(function(s,x){return s+(x[k]||0)},0)};o.g={vues:sm(cur,'vues'),pv:sm(prv,'vues'),appels:sm(cur,'appels'),pa:sm(prv,'appels'),itin:sm(cur,'itin'),pi:sm(prv,'itin'),du:cur.length?cur[0].d:'',au:cur.length?cur[cur.length-1].d:''};}
+ var a=d.avis||{};if(!a.error&&a.total){var nw=(a.dates||[]).filter(function(x){return x[0]>=A&&x[0]<=B});o.av={note:a.note,total:a.total,n:nw.length};}
+ var b=(d.by||{}).s||{};o.pages=(b.pages||[]).slice(0,5);o.refs=(b.toprefs||[]).slice(0,4);return o;}
+function k(lbl,v,dd,c){return '<div class="k" style="--c:'+c+'"><small>'+lbl+'</small><b>'+v+'</b>'+(dd||'')+'</div>';}
+async function go(pw){$('#msg').textContent='Ouverture…';
+ var R=await Promise.all(C.map(function(c){return dec(c.u,pw).then(function(d){return live(d).then(function(){return d})}).catch(function(e){return {err:e}})}));
+ if(R.every(function(r){return r.err})){$('#msg').textContent='Mot de passe incorrect.';try{localStorage.removeItem('dbk')}catch(e){}$('#lock').hidden=false;return;}
+ $('#lock').hidden=true;$('#res').hidden=false;$('#per').textContent='Du '+fr(A)+' au '+fr(B)+' · '+C.map(function(c){return c.n}).join(', ');
+ var T={vis:0,pvis:0,doc:0,pdoc:0,tel:0,ptel:0},h='';
+ R.forEach(function(d,i){var c=C[i];h+='<section class="ct" style="--c:'+c.c+';--t:'+c.t+'"><h2><i></i>'+c.nom+'</h2>';
+  if(d.err){h+='<p class="err">Données indisponibles pour ce centre (mot de passe différent ?).</p></section>';return;}
+  var s=stats(d);['vis','pvis','doc','pdoc','tel','ptel'].forEach(function(x){T[x]+=s[x]});
+  var ct=s.doc+s.tel,rate=s.vis?(ct/s.vis*100).toFixed(1).replace('.',',')+' %':'—';
+  h+='<div class="tot">'+k('Visiteurs',fmt(s.vis),dl(s.vis,s.pvis),'#3b6ef5')+k('Clics Doctolib',fmt(s.doc),dl(s.doc,s.pdoc),'#e0457b')+k('Clics téléphone',fmt(s.tel),dl(s.tel,s.ptel),'#e08a1e')+k('Taux de contact',rate,'','#178a62')+'</div>';
+  if(s.g||s.av){h+='<div class="tot">';if(s.g){h+=k('Vues fiche Google',fmt(s.g.vues),dl(s.g.vues,s.g.pv),'#7a4fd6')+k('Appels depuis Google',fmt(s.g.appels),dl(s.g.appels,s.g.pa),'#0e8fa3')+k('Itinéraires',fmt(s.g.itin),dl(s.g.itin,s.g.pi),'#b0661e');}
+   if(s.av)h+=k('Avis Google','★ '+String(s.av.note).replace('.',','),'<span class="d eq">'+fmt(s.av.total)+' avis · '+s.av.n+' nouveau'+(s.av.n>1?'x':'')+'</span>','#e8b33a');h+='</div>';}
+  h+='<div class="two"><div><h3>Pages les plus vues</h3><table>'+(s.pages.map(function(p){return '<tr><td>'+esc((p.title||p.path).replace(/ ?[|–-] (Cabinet Dentaire du Bourg|Espace dentaire \w+).*$/,''))+'</td><td class="n">'+fmt(p.n)+'</td></tr>'}).join('')||'<tr><td>—</td></tr>')+'</table></div>'
+   +'<div><h3>D’où viennent les visiteurs</h3><table>'+(s.refs.map(function(r){return '<tr><td>'+esc(r.name==='(direct)'||!r.name?'Accès direct / favoris':r.name)+'</td><td class="n">'+fmt(r.n)+'</td></tr>'}).join('')||'<tr><td>—</td></tr>')+'</table></div></div></section>';});
+ var tc=T.doc+T.tel;$('#all').innerHTML=k('Visiteurs · 3 centres',fmt(T.vis),dl(T.vis,T.pvis),'#3b6ef5')+k('Clics Doctolib',fmt(T.doc),dl(T.doc,T.pdoc),'#e0457b')+k('Clics téléphone',fmt(T.tel),dl(T.tel,T.ptel),'#e08a1e')+k('Taux de contact',T.vis?(tc/T.vis*100).toFixed(1).replace('.',',')+' %':'—','','#178a62');
+ $('#list').innerHTML=h;
+ try{sessionStorage.setItem('dbk',pw)}catch(e){}}
+$('#lock').addEventListener('submit',function(e){e.preventDefault();go($('#pw').value);});
+var s=null;try{s=localStorage.getItem('dbk')||sessionStorage.getItem('dbk')}catch(e){}
+if(s)go(s);else $('#lock').hidden=false;
+})();
+</script></body></html>
