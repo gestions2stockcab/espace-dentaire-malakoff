@@ -3,4 +3,5 @@ Allow: /
 Disallow: /tableau-de-bord/
 Disallow: /admin/
 Disallow: /centres/
+Disallow: /partage/
 Sitemap: https://www.espacedentairemalakoff.fr/sitemap.xml
