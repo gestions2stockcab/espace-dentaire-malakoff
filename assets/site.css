@@ -592,6 +592,7 @@ body{color:var(--texte)}
 .btn-trait:hover{background:rgba(139,107,74,.08)}
 .carte:hover{background:#fff}
 .urgence{background:linear-gradient(120deg,#EBDFCC,#E2CFB0)!important}
+.soins-fond .carte,.cp-home .carte{min-height:0!important;padding-bottom:44px!important}
 /* galerie */
 .galerie-mk{padding:88px 0}
 .galerie-mk .g-tete{margin-bottom:28px}
