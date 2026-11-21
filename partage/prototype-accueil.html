@@ -58,6 +58,11 @@ header a.tel{color:var(--creme);text-decoration:none;font-weight:600;font-size:1
 .lire{padding:64px 0;background:var(--creme)}.lire .grille{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:28px 0}
 .lire a.c{display:block;padding:22px;border-radius:20px;background:var(--sable);text-decoration:none;color:var(--espresso);font-weight:600;font-size:18px;line-height:1.3}.lire a.c small{display:block;font-weight:500;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--chene);margin-bottom:8px}
 @media(max-width:760px){.lire .grille{grid-template-columns:1fr}}
+.gestes{padding:64px 0}.gestes ol{list-style:none;counter-reset:g;margin:28px 0;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.gestes li{counter-increment:g;background:var(--creme);border-radius:20px;padding:18px}.gestes li:before{content:counter(g,decimal-leading-zero);display:block;font-size:12px;letter-spacing:.1em;color:var(--chene);margin-bottom:8px}
+.gestes b{display:block;color:var(--espresso);font-size:16px;line-height:1.25;margin-bottom:6px}.gestes span{font-size:14px;color:var(--discret);line-height:1.45;display:block}
+@media(max-width:900px){.gestes ol{grid-template-columns:1fr 1fr}}@media(max-width:520px){.gestes ol{grid-template-columns:1fr}}
+.lire .sous{color:var(--discret);margin:10px 0 0}.actu{margin-top:34px;padding-top:24px;border-top:1px solid var(--trait);display:flex;flex-wrap:wrap;gap:10px 26px;align-items:baseline}.actu small{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--chene);font-weight:600}.actu a{color:var(--espresso);font-weight:600;text-decoration:none}
 nav.menu{display:none}@media(min-width:900px){nav.menu{display:flex;gap:26px}nav.menu a{color:var(--creme);text-decoration:none;font-weight:600;font-size:15px;opacity:.92}}
 
 /* 5. spécialités : deux cartes photo */
@@ -136,14 +141,31 @@ blockquote footer{font-size:15px;color:var(--discret);margin-top:12px}
 <a class="btn btn-main" href="../c/lequipe-du-centre-dentaire/">Découvrir l’équipe</a>
 </div></section>
 
+<section class="gestes"><div class="wrap">
+<h2>Les bons gestes, chaque jour.</h2>
+<ol>
+<li><b>Deux fois par jour, deux minutes</b><span>Matin et soir. Celui du soir compte le plus.</span></li>
+<li><b>La brosse</b><span>Souple, à petite tête. À changer tous les trois mois.</span></li>
+<li><b>Le dentifrice</b><span>Fluoré, 1 450 ppm pour un adulte. Crachez sans rincer.</span></li>
+<li><b>Entre les dents</b><span>Fil dentaire ou brossettes, chaque jour.</span></li>
+<li><b>Le contrôle</b><span>Un bilan par an, avec détartrage si besoin.</span></li>
+</ol>
+<a class="lien" href="../c/hygiene-dentaire/">Voir le brossage en schémas</a>
+</div></section>
+
 <section class="lire"><div class="wrap">
-<h2>À lire.</h2>
+<h2>Fiches conseils.</h2>
+<p class="sous">Les bons gestes après vos soins, à lire ou à garder sur votre téléphone.</p>
 <div class="grille">
-<a class="c" href="../c/article-aligneurs-ou-appareil-fixe/"><small>Article</small>Aligneurs invisibles ou appareil fixe : comment choisir ?</a>
-<a class="c" href="../c/actu-2026-11-gencives/"><small>Conseil du mois</small>Gencives qui saignent</a>
-<a class="c" href="../c/conseil-apres-extraction/"><small>Fiche conseil</small>Après une extraction</a>
+<a class="c" href="../c/conseil-apres-extraction/"><small>01</small>Après une extraction</a>
+<a class="c" href="../c/conseil-apres-devitalisation/"><small>02</small>Après une dévitalisation</a>
+<a class="c" href="../c/conseil-apres-couronne/"><small>03</small>Après la pose d’une couronne</a>
+<a class="c" href="../c/conseil-apres-implant/"><small>04</small>Après la pose d’un implant</a>
+<a class="c" href="../c/conseil-apres-soin-carie/"><small>05</small>Après un soin de carie</a>
+<a class="c" href="../c/conseil-apres-detartrage/"><small>06</small>Après un détartrage</a>
 </div>
-<a class="lien" href="../c/actualites/">Toutes les actualités</a> · <a class="lien" href="../c/conseils-patients/">Fiches conseils</a>
+<a class="lien" href="../c/conseils-patients/">Toutes les fiches conseils (18)</a>
+<div class="actu"><small>Actualités</small><a href="../c/article-aligneurs-ou-appareil-fixe/">Aligneurs invisibles ou appareil fixe : comment choisir ?</a><a href="../c/actu-2026-11-gencives/">Conseil du mois : gencives qui saignent</a><a class="lien" href="../c/actualites/">Toutes les actualités</a></div>
 </div></section>
 
 <section class="avis"><div class="wrap">
