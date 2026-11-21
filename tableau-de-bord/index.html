@@ -122,6 +122,7 @@ footer{color:var(--faint);font-size:.78rem;margin-top:24px}
       <section class="card"><h2>État du site</h2><p class="note">Automatisations, qualité, conseil du mois</p><div id="t-etat"></div></section>
     </div>
     <div class="grid2">
+      <section class="card" id="c-motifs"><h2>Clics Doctolib par motif</h2><p class="note pl">30 derniers jours</p><div id="t-motifs"></div></section>
       <section class="card"><h2>Pages les plus vues</h2><p class="note pl">30 derniers jours</p><div id="t-pages"></div></section>
       <section class="card"><h2>D'où viennent les visiteurs</h2><p class="note pl">30 derniers jours</p><div id="t-refs"></div></section>
     </div>
@@ -180,6 +181,7 @@ async function live(d){var g=d.gc;if(!g||!g.token)return;
     d.daily=tot.stats.map(function(x){return {d:x.day,v:x.daily||0}});
     var ev=function(n){var h=(hs.hits||[]).filter(function(x){return x.event&&x.path===n})[0];return h?(h.stats||[]).map(function(x){return {d:x.day,v:x.daily||0}}):[]};
     d.events_daily={doctolib:ev('Clic Doctolib'),tel:ev('Clic téléphone')};
+    d.motifs=(hs.hits||[]).filter(function(x){return x.event&&/^RDV /.test(x.path)}).map(function(x){return {n:x.path,s:(x.stats||[]).map(function(y){return {d:y.day,v:y.daily||0}})}});
     d.errors=(d.errors||[]).filter(function(x){return !/GoatCounter/.test(x)});
     d.liveAt=new Date().toISOString();render(d);
   }catch(err){}
@@ -215,6 +217,7 @@ function render(d){DATA=d;var P=PL[PER];
   bars('#c-ev',agg(S,G(),'doc',G()==='j'?30:12),agg(S,G(),'tel',G()==='j'?30:12));
   var B=(d.by||{})[PER]||{pages:d.pages,toprefs:d.toprefs};
   document.querySelectorAll('.note.pl').forEach(function(e){e.textContent=P.tab.charAt(0).toUpperCase()+P.tab.slice(1)});
+  (function(){var ds={};cur.forEach(function(x){ds[x.d]=1});var R=(d.motifs||[]).map(function(m){return {name:m.n.replace(/^RDV /,''),n:m.s.reduce(function(a,x){return a+(ds[x.d]?x.v:0)},0)}}).filter(function(x){return x.n}).sort(function(a,b){return b.n-a.n});var c=document.getElementById('c-motifs');if(c)c.hidden=!R.length&&!(d.motifs||[]).length;if(R.length)table('#t-motifs',R);else{var t=document.getElementById('t-motifs');if(t)t.innerHTML='<p class="empty">Aucun clic sur cette période.</p>';}})();
   table('#t-pages',(B.pages||[]).map(function(x){return {name:(x.title?x.title.replace(/ ?\| Espace dentaire Malakoff.*$/,''):x.path),sub:x.path,n:x.n}}));
   table('#t-refs',(B.toprefs||[]).map(function(x){return {name:x.name==='(direct)'||!x.name?'Accès direct / favoris':x.name,n:x.n}}));
   ['sizes','systems','locations'].forEach(function(k){table('#t-'+k,(d[k]||[]).map(function(x){return {name:FR[x.name]||x.name,n:x.n}}))});
