@@ -297,6 +297,16 @@ var g=box.querySelector('.g-logo');if(g)g.outerHTML='<div><div class="score">'+S
 var h=box.querySelector('h2');if(h&&d.count)h.textContent=(document.documentElement.lang==='en'?d.count+' patients have rated the centre on Google.':d.count+' patients ont noté le centre sur Google.');
 var l=(d.reviews||[]).slice(0,3);if(l.length){var r=document.createElement('div');r.className='g-reviews';r.innerHTML=l.map(function(v){var n=Math.round(v.rating||5);return '<figure class="g-review"><span class="stars">'+'★★★★★'.slice(0,n)+'</span><blockquote>'+esc(v.text||'')+'</blockquote><figcaption>'+esc(v.author||'')+'</figcaption></figure>';}).join('');box.appendChild(r);}
 }).catch(function(){});})();</script><script>(function(){document.querySelectorAll('.membre.flip').forEach(function(c){function t(){var o=c.classList.toggle('on');c.setAttribute('aria-pressed',o?'true':'false');}
-c.addEventListener('click',function(e){if(e.target.closest('a'))return;t();});c.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();t();}});});})();</script><nav class="lang-sw" aria-label="Langue / Language"><a href="../../c/brossage-des-dents-orthodontie/" hreflang="fr" lang="fr" aria-current="true">FR</a><a href="../../en/c/brossage-des-dents-orthodontie/" hreflang="en" lang="en">EN</a></nav>
+c.addEventListener('click',function(e){if(e.target.closest('a'))return;t();});c.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();t();}});});})();</script><script>(function(){var box=document.querySelector('.v2-avis .mini-avis');if(!box||!/^https?:$/.test(location.protocol))return;
+fetch('https://www.cabinetdentairedubourg.fr/avis-malakoff.json',{cache:'no-cache'}).then(function(r){return r.ok?r.json():null}).then(function(d){
+var l=((d&&d.reviews)||[]).filter(function(v){return v.text});if(!l.length)return;
+var esc=function(t){var e=document.createElement('div');e.textContent=t;return e.innerHTML};
+var n=Math.min(l.length,window.innerWidth<700?4:6),i=0,cards=[];
+function fill(c,v){var k=Math.round(v.rating||5);c.innerHTML='<span class="st">'+'★★★★★'.slice(0,k)+'</span><p>'+esc(v.text)+'</p><small>'+esc(v.author||'Patient')+'</small>'}
+for(var j=0;j<n;j++){var c=document.createElement('figure');fill(c,l[i++%l.length]);c.style.animationDelay=(j*.25)+'s';box.appendChild(c);cards.push(c)}
+document.querySelector('.v2-avis').classList.add('mini-on');
+if(l.length<=n||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+var p=0;setInterval(function(){if(document.hidden)return;var c=cards[p++%n];c.classList.add('out');setTimeout(function(){fill(c,l[i++%l.length]);c.classList.remove('out')},600)},3200);
+}).catch(function(){})})();</script><nav class="lang-sw" aria-label="Langue / Language"><a href="../../c/brossage-des-dents-orthodontie/" hreflang="fr" lang="fr" aria-current="true">FR</a><a href="../../en/c/brossage-des-dents-orthodontie/" hreflang="en" lang="en">EN</a></nav>
 
 <script data-goatcounter="https://espacedentairemalakoff.goatcounter.com/count" async src="../../assets/count.js"></script><script defer src="../../assets/track.js"></script></body></html>
