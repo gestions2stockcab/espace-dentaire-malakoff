@@ -1,0 +1,22 @@
+[
+ {
+  "fichier": "01-accueil.jpg",
+  "categorie": "INTERIOR",
+  "description": "L’accueil de l’Espace dentaire Malakoff"
+ },
+ {
+  "fichier": "02-salle-de-soins.jpg",
+  "categorie": "INTERIOR",
+  "description": "Une salle de soins"
+ },
+ {
+  "fichier": "03-couloir-des-cabinets.jpg",
+  "categorie": "INTERIOR",
+  "description": "Le couloir des cabinets"
+ },
+ {
+  "fichier": "04-cabinets.jpg",
+  "categorie": "INTERIOR",
+  "description": "Les cabinets"
+ }
+]

@@ -1,0 +1,4 @@
+Photos publiées automatiquement sur la fiche Google « Espace dentaire Malakoff », une par mois (le 5),
+dans l'ordre de liste.json. Pour en ajouter : copier la photo ici (JPEG, au moins 720 px de côté),
+l'ajouter à la fin de liste.json, puis publier le site. Catégories Google : INTERIOR, EXTERIOR, AT_WORK, TEAMS.
+Suivi des photos déjà publiées : photos_malakoff_vues.json dans le dépôt public cabinet-dentaire-du-bourg (action photos-malakoff.yml).
