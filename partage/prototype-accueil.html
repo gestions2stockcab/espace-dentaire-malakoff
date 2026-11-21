@@ -21,6 +21,12 @@ h2{font-size:clamp(30px,5vw,48px);font-weight:700}
 .btn:active{transform:scale(.98)}
 .btn-main{background:var(--noyer);color:var(--creme)}.btn-main:hover{background:var(--espresso)}
 .btn-clair{background:var(--creme);color:var(--noyer)}
+.row{display:flex;flex-wrap:wrap;gap:10px}.row.c{justify-content:center}
+.btn-terre{background:var(--terre);color:var(--creme);cursor:pointer;list-style:none}.btn-terre::-webkit-details-marker{display:none}
+.btn-trait{border:1.5px solid rgba(251,246,238,.6);color:var(--creme)}.btn-ligne{border:1.5px solid rgba(74,52,38,.35);color:var(--noyer)}
+.btn-verre{background:rgba(251,246,238,.18);border:1px solid rgba(251,246,238,.5);color:var(--creme);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.urg{position:relative}.urg .pop{position:absolute;top:calc(100% + 8px);left:0;z-index:10;min-width:230px;background:var(--creme);border-radius:16px;padding:6px;box-shadow:0 14px 36px rgba(0,0,0,.25)}.urg .pop a{display:block;padding:12px 14px;border-radius:12px;color:var(--noyer);font-weight:600;text-decoration:none}
+.carte .row .btn{min-height:46px;padding:0 20px;font-size:15px}
 .lien{font-weight:600;text-decoration:none;border-bottom:1.5px solid currentColor;padding-bottom:1px}
 
 /* en-tête minimal */
@@ -103,8 +109,9 @@ blockquote footer{font-size:15px;color:var(--discret);margin-top:12px}
 <section class="hero"><div class="wrap">
 <h1>Votre espace dentaire à Malakoff.</h1>
 <p>Soins, implants, orthodontie, parodontie et urgences, réunis en un seul lieu.</p>
-<a class="btn btn-clair" href="https://www.doctolib.fr/centre-dentaire/malakoff/espace-dentaire-malakoff/booking/specialities?bookingFunnelSource=external_referral">Prendre rendez-vous</a>
-<p class="sec">Une urgence ? <a class="lien" href="https://www.doctolib.fr/centre-dentaire/malakoff/espace-dentaire-malakoff/booking/practitioners?specialityId=1&amp;telehealth=false&amp;placeId=practice-207016&amp;motiveCategoryIds%5B%5D=546950&amp;motiveIds%5B%5D=3140869&amp;bookingFunnelSource=external_referral">Dentaire</a> · <a class="lien" href="https://www.doctolib.fr/centre-dentaire/malakoff/espace-dentaire-malakoff/booking/availabilities?specialityId=1&amp;telehealth=false&amp;placeId=practice-207016&amp;motiveCategoryIds%5B%5D=546951&amp;motiveIds%5B%5D=15912190&amp;practitionerId=54451073&amp;bookingFunnelSource=external_referral">Gencives</a></p>
+<div class="row"><a class="btn btn-clair" href="https://www.doctolib.fr/centre-dentaire/malakoff/espace-dentaire-malakoff/booking/specialities?bookingFunnelSource=external_referral">Prendre rendez-vous</a>
+<details class="urg"><summary class="btn btn-terre">Urgence</summary><div class="pop"><a href="https://www.doctolib.fr/centre-dentaire/malakoff/espace-dentaire-malakoff/booking/practitioners?specialityId=1&amp;telehealth=false&amp;placeId=practice-207016&amp;motiveCategoryIds%5B%5D=546950&amp;motiveIds%5B%5D=3140869&amp;bookingFunnelSource=external_referral">Urgence dentaire</a><a href="https://www.doctolib.fr/centre-dentaire/malakoff/espace-dentaire-malakoff/booking/availabilities?specialityId=1&amp;telehealth=false&amp;placeId=practice-207016&amp;motiveCategoryIds%5B%5D=546951&amp;motiveIds%5B%5D=15912190&amp;practitionerId=54451073&amp;bookingFunnelSource=external_referral">Urgence gencives (paro)</a></div></details>
+<a class="btn btn-trait" href="tel:+33185626200">01 85 62 62 00</a></div>
 </div></section>
 
 <section class="infos"><div class="wrap">
@@ -123,7 +130,7 @@ blockquote footer{font-size:15px;color:var(--discret);margin-top:12px}
 <li><a href="../c/les-protheses-et-bridges/"><span>Couronnes et prothèses<small>Couronnes, bridges, prothèses</small></span></a></li>
 <li><a href="../c/les-facettes/"><span>Facettes et blanchiment<small>L’esthétique du sourire</small></span></a></li>
 </ul>
-<a class="btn btn-main" href="https://www.doctolib.fr/centre-dentaire/malakoff/espace-dentaire-malakoff/booking/motives?specialityId=1&amp;telehealth=false&amp;placeId=practice-207016&amp;profile_skipped=true&amp;bookingFunnelSource=external_referral">Prendre rendez-vous</a>
+<div class="row"><a class="btn btn-main" href="https://www.doctolib.fr/centre-dentaire/malakoff/espace-dentaire-malakoff/booking/motives?specialityId=1&amp;telehealth=false&amp;placeId=practice-207016&amp;profile_skipped=true&amp;bookingFunnelSource=external_referral">Prendre rendez-vous</a><a class="btn btn-ligne" href="../c/les-soins-dentaires/">Tous les soins</a></div>
 </div></section>
 
 <div class="mosaique"><img src="../assets/c9c0e86dd4a7.webp" alt="Salle de soins de l’Espace dentaire Malakoff" loading="lazy"><img src="../assets/14e533a29b1a.webp" alt="Couloir des cabinets" loading="lazy"><img src="../assets/651e766d062e.webp" alt="Portes des cabinets" loading="lazy"></div>
@@ -131,14 +138,14 @@ blockquote footer{font-size:15px;color:var(--discret);margin-top:12px}
 <section class="spe"><div class="wrap">
 <h2>Deux spécialités sur place.</h2>
 <div class="duo">
-<a class="carte" href="../c/orthodontiste-malakoff/"><img src="../assets/14e533a29b1a.webp" alt="Couloir des cabinets de l’Espace dentaire Malakoff" loading="lazy"><div><img class="medaillon" src="../assets/c1c1f99dca42.webp" alt="Dr Carla Levy, orthodontiste"><h3>Orthodontie</h3><p>Dr Carla Levy · enfants et adultes</p><span class="btn btn-clair">Découvrir</span></div></a>
-<a class="carte" href="../c/parodontie-malakoff/"><img src="../assets/651e766d062e.webp" alt="Portes des cabinets de l’Espace dentaire Malakoff" loading="lazy"><div><img class="medaillon" src="../assets/714d052c3c75.webp" alt="Dr Bénédicte Rioual Vergnol, parodontie"><h3>Parodontie</h3><p>Dr Bénédicte Rioual Vergnol · gencives</p><span class="btn btn-clair">Découvrir</span></div></a>
+<a class="carte" href="../c/orthodontiste-malakoff/"><img src="../assets/14e533a29b1a.webp" alt="Couloir des cabinets de l’Espace dentaire Malakoff" loading="lazy"><div><img class="medaillon" src="../assets/c1c1f99dca42.webp" alt="Dr Carla Levy, orthodontiste"><h3>Orthodontie</h3><p>Dr Carla Levy · enfants et adultes</p><span class="row"><object><a class="btn btn-clair" href="https://www.doctolib.fr/centre-dentaire/malakoff/espace-dentaire-malakoff/booking/motives?specialityId=270&amp;telehealth=false&amp;placeId=practice-207016&amp;profile_skipped=true&amp;bookingFunnelSource=external_referral">RDV orthodontie</a></object><span class="btn btn-verre">Découvrir</span></span></div></a>
+<a class="carte" href="../c/parodontie-malakoff/"><img src="../assets/651e766d062e.webp" alt="Portes des cabinets de l’Espace dentaire Malakoff" loading="lazy"><div><img class="medaillon" src="../assets/714d052c3c75.webp" alt="Dr Bénédicte Rioual Vergnol, parodontie"><h3>Parodontie</h3><p>Dr Bénédicte Rioual Vergnol · gencives</p><span class="row"><object><a class="btn btn-clair" href="https://www.doctolib.fr/centre-dentaire/malakoff/espace-dentaire-malakoff/booking/availabilities?specialityId=1&amp;telehealth=false&amp;placeId=practice-207016&amp;motiveCategoryIds%5B%5D=546951&amp;motiveIds%5B%5D=15912191&amp;practitionerId=54451073&amp;bookingFunnelSource=external_referral">1er RDV paro</a></object><span class="btn btn-verre">Découvrir</span></span></div></a>
 </div></div></section>
 
 <section class="equipe"><div class="wrap">
 <h2>Une équipe, un seul lieu.</h2>
 <div class="av"><img src="../assets/79809bfdea36.webp" alt="Dr Alicia Soussan"><img src="../assets/cdd69afe2a06.webp" alt="Dr Simon Atlan"><img src="../assets/ebcfb9c29a1d.webp" alt="Dr Laura Benchetrit"><img src="../assets/12a13cd93c16.webp" alt="Dr Cyriele Berdah"><img src="../assets/b871d9a34629.webp" alt="Dr Pierre-Alexandre Bouvet"><img src="../assets/c1c1f99dca42.webp" alt="Dr Carla Levy"><img src="../assets/714d052c3c75.webp" alt="Dr Bénédicte Rioual Vergnol"></div>
-<a class="btn btn-main" href="../c/lequipe-du-centre-dentaire/">Découvrir l’équipe</a>
+<div class="row c"><a class="btn btn-main" href="../c/lequipe-du-centre-dentaire/">Découvrir l’équipe</a><a class="btn btn-ligne" href="https://www.doctolib.fr/centre-dentaire/malakoff/espace-dentaire-malakoff/booking/specialities?bookingFunnelSource=external_referral">Prendre rendez-vous</a></div>
 </div></section>
 
 <section class="gestes"><div class="wrap">
@@ -150,7 +157,7 @@ blockquote footer{font-size:15px;color:var(--discret);margin-top:12px}
 <li><b>Entre les dents</b><span>Fil dentaire ou brossettes, chaque jour.</span></li>
 <li><b>Le contrôle</b><span>Un bilan par an, avec détartrage si besoin.</span></li>
 </ol>
-<a class="lien" href="../c/hygiene-dentaire/">Voir le brossage en schémas</a>
+<div class="row"><a class="btn btn-main" href="https://www.doctolib.fr/centre-dentaire/malakoff/espace-dentaire-malakoff/booking/practitioners?specialityId=1&amp;telehealth=false&amp;placeId=practice-207016&amp;motiveCategoryIds%5B%5D=546950&amp;motiveIds%5B%5D=3140870&amp;bookingFunnelSource=external_referral">RDV contrôle / détartrage</a><a class="btn btn-ligne" href="../c/hygiene-dentaire/">Le brossage en schémas</a></div>
 </div></section>
 
 <section class="lire"><div class="wrap">
@@ -164,21 +171,20 @@ blockquote footer{font-size:15px;color:var(--discret);margin-top:12px}
 <a class="c" href="../c/conseil-apres-soin-carie/"><small>05</small>Après un soin de carie</a>
 <a class="c" href="../c/conseil-apres-detartrage/"><small>06</small>Après un détartrage</a>
 </div>
-<a class="lien" href="../c/conseils-patients/">Toutes les fiches conseils (18)</a>
+<div class="row"><a class="btn btn-ligne" href="../c/conseils-patients/">Toutes les fiches conseils (18)</a></div>
 <div class="actu"><small>Actualités</small><a href="../c/article-aligneurs-ou-appareil-fixe/">Aligneurs invisibles ou appareil fixe : comment choisir ?</a><a href="../c/actu-2026-11-gencives/">Conseil du mois : gencives qui saignent</a><a class="lien" href="../c/actualites/">Toutes les actualités</a></div>
 </div></section>
 
 <section class="avis"><div class="wrap">
 <div class="note">4,8<small>/5</small></div><div class="etoiles">★★★★★</div>
 <blockquote>« Accueil agréable, locaux propres, et dentiste très agréable et expliquant la suite du traitement. »<footer>Claudia Doucet · avis Google</footer></blockquote>
-<a class="lien" href="https://www.google.com/maps/search/?api=1&amp;query=Espace+dentaire+Malakoff">Lire les 682 avis</a>
+<div class="row c"><a class="btn btn-ligne" href="https://www.google.com/maps/search/?api=1&amp;query=Espace+dentaire+Malakoff">Lire les 682 avis</a></div>
 </div></section>
 
 <section class="acces"><div class="wrap">
 <h2>112, boulevard Gabriel Péri.</h2>
 <p>Métro 13 Malakoff – Plateau de Vanves · Bus 126 et 191</p>
-<a class="btn btn-clair" href="https://www.google.com/maps/dir/?api=1&amp;destination=Espace+dentaire+Malakoff+112+boulevard+Gabriel+P%C3%A9ri+92240+Malakoff">Itinéraire</a>
-<p class="sec"><a class="lien" href="../c/acces-malakoff/">Venir au centre</a></p>
+<div class="row"><a class="btn btn-clair" href="https://www.google.com/maps/dir/?api=1&amp;destination=Espace+dentaire+Malakoff+112+boulevard+Gabriel+P%C3%A9ri+92240+Malakoff">Itinéraire</a><a class="btn btn-trait" href="https://www.doctolib.fr/centre-dentaire/malakoff/espace-dentaire-malakoff/booking/specialities?bookingFunnelSource=external_referral">Prendre rendez-vous</a><a class="btn btn-trait" href="../c/acces-malakoff/">Métro, bus, parking</a></div>
 </div></section>
 
 <div class="pied">© 2026 Espace dentaire Malakoff · <a href="../c/mentions-legales-espace-dentaire-malakoff-dentiste/">Mentions légales</a></div>
