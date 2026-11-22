@@ -62,7 +62,7 @@
 <div class="copyright">
 <a href="../../c/honoraires/">Honoraires</a> · <a href="../../c/infos-conseil-de-lordre/">Infos Conseil de l’Ordre</a> · <a href="../../tableau-de-bord/" rel="nofollow" class="admin-lien">Espace cabinet</a> · <a href="../../c/mentions-legales-espace-dentaire-malakoff-dentiste/">Mentions légales</a><br>
 © 2026 Espace dentaire Malakoff
-<p class="liens-loc"><a href="../../c/lequipe-du-centre-dentaire/">L’équipe</a><a href="../../c/les-soins-dentaires/">Soins dentaires</a><a href="../../c/conseils-patients/">Fiches conseils</a><a href="../../c/contact/">Contact</a><a href="../../c/orthodontiste-malakoff/">Orthodontiste à Malakoff</a><a href="../../c/implant-dentaire-malakoff/">Implant dentaire à Malakoff</a><a href="../../c/urgence-dentaire-malakoff/">Urgence dentaire à Malakoff</a><a href="../../c/parodontie-malakoff/">Parodontie à Malakoff</a><a href="../../c/acces-malakoff/">Venir au centre</a><a href="../../c/questions-frequentes/">Questions fréquentes</a><a href="../../c/actualites/">Actualités</a></p></div>
+<details class="plus-liens"><summary>Plus d’informations</summary><p class="liens-loc"><a href="../../c/lequipe-du-centre-dentaire/">L’équipe</a><a href="../../c/les-soins-dentaires/">Soins dentaires</a><a href="../../c/conseils-patients/">Fiches conseils</a><a href="../../c/contact/">Contact</a><a href="../../c/orthodontiste-malakoff/">Orthodontiste à Malakoff</a><a href="../../c/implant-dentaire-malakoff/">Implant dentaire à Malakoff</a><a href="../../c/urgence-dentaire-malakoff/">Urgence dentaire à Malakoff</a><a href="../../c/parodontie-malakoff/">Parodontie à Malakoff</a><a href="../../c/acces-malakoff/">Venir au centre</a><a href="../../c/questions-frequentes/">Questions fréquentes</a><a href="../../c/actualites/">Actualités</a></p></details><script>(function(){var d=document.querySelector(".plus-liens");if(d&&window.innerWidth>760)d.open=true})();</script></div>
 </footer>
 <script>(function () {
   'use strict';
@@ -247,11 +247,13 @@ c.addEventListener('click',function(e){if(e.target.closest('a'))return;t();});c.
 fetch('https://www.cabinetdentairedubourg.fr/avis-malakoff.json',{cache:'no-cache'}).then(function(r){return r.ok?r.json():null}).then(function(d){
 var l=((d&&d.reviews)||[]).filter(function(v){return v.text});if(!l.length)return;
 var esc=function(t){var e=document.createElement('div');e.textContent=t;return e.innerHTML};
-var n=Math.min(l.length,window.innerWidth<700?4:6),i=0,cards=[];
+var mob=window.innerWidth<=760,n=Math.min(l.length,mob?12:6),i=0,cards=[];
 function fill(c,v){var k=Math.round(v.rating||5);c.innerHTML='<span class="st">'+'★★★★★'.slice(0,k)+'</span><p>'+esc(v.text)+'</p><small>'+esc(v.author||'Patient')+'</small>'}
 for(var j=0;j<n;j++){var c=document.createElement('figure');fill(c,l[i++%l.length]);c.style.animationDelay=(j*.25)+'s';box.appendChild(c);cards.push(c)}
 document.querySelector('.v2-avis').classList.add('mini-on');
-if(l.length<=n||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+if(mob){var stop=false;box.addEventListener('touchstart',function(){stop=true},{passive:true});setInterval(function(){if(stop||document.hidden)return;var w=cards[0].offsetWidth+10;box.scrollLeft+w>=box.scrollWidth-box.clientWidth-4?box.scrollTo({left:0,behavior:'smooth'}):box.scrollBy({left:w,behavior:'smooth'})},3800);return}
+if(l.length<=n)return;
 var p=0;setInterval(function(){if(document.hidden)return;var c=cards[p++%n];c.classList.add('out');setTimeout(function(){fill(c,l[i++%l.length]);c.classList.remove('out')},600)},3200);
 }).catch(function(){})})();</script><nav class="lang-sw" aria-label="Langue / Language"><a href="../../c/conseil-grossesse/" hreflang="fr" lang="fr" aria-current="true">FR</a><a href="../../en/c/conseil-grossesse/" hreflang="en" lang="en">EN</a></nav>
 
