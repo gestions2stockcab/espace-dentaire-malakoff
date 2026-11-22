@@ -702,6 +702,9 @@ section.soins-fond{background:linear-gradient(180deg,rgba(243,234,219,.88) 0%,rg
 @media(max-width:900px){.mini-avis{grid-template-columns:1fr 1fr}}@media(max-width:520px){.mini-avis{gap:10px}.mini-avis figure{padding:12px 13px;border-radius:14px}.mini-avis p{font-size:13.5px;-webkit-line-clamp:5}.mini-avis .st{font-size:11px;letter-spacing:1px}.mini-avis small{font-size:12px}}
 @media(prefers-reduced-motion:reduce){.mini-avis figure{animation:none;transition:none}}
 
+/* photos discrètes en fond de « Nos soins » et « Fiches conseils » (Simon, 22/11/2026) */
+.v2-soins{background:linear-gradient(rgba(243,234,219,.88),rgba(243,234,219,.92)),var(--ph2) center 45%/cover!important}
+.v2-fiches{background:linear-gradient(rgba(251,246,238,.86),rgba(251,246,238,.9)),var(--ph3) center 40%/cover!important}
 /* mobile plus agréable (Simon, 22/11/2026) : barre d'action, carrousels */
 .g-note{display:inline-flex;gap:6px;align-items:center;margin-top:12px;font-size:14px;font-weight:600;color:#efe4d0!important;text-decoration:none!important}.g-note span{color:#e3b04b;letter-spacing:1px}
 .barre-mob{display:none}
