@@ -703,6 +703,7 @@ section.soins-fond{background:linear-gradient(180deg,rgba(243,234,219,.88) 0%,rg
 @media(prefers-reduced-motion:reduce){.mini-avis figure{animation:none;transition:none}}
 
 /* mobile plus agréable (Simon, 22/11/2026) : barre d'action, carrousels */
+.g-note{display:inline-flex;gap:6px;align-items:center;margin-top:12px;font-size:14px;font-weight:600;color:#efe4d0!important;text-decoration:none!important}.g-note span{color:#e3b04b;letter-spacing:1px}
 .barre-mob{display:none}
 @media(max-width:760px){
 .barre-mob{display:flex;position:fixed;left:12px;right:12px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:58;gap:8px;padding:6px;border-radius:999px;background:rgba(251,246,238,.94);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border:1px solid rgba(80,55,20,.12);box-shadow:0 12px 30px rgba(60,40,20,.22);transform:translateY(140%);transition:transform .35s ease}
