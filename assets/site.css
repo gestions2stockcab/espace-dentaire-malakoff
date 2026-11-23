@@ -705,6 +705,9 @@ section.soins-fond{background:linear-gradient(180deg,rgba(243,234,219,.88) 0%,rg
 /* photos discrètes en fond de « Nos soins » et « Fiches conseils » (Simon, 22/11/2026) */
 .v2-soins{background:linear-gradient(90deg,rgba(243,234,219,.9) 0%,rgba(243,234,219,.8) 55%,rgba(243,234,219,.66) 100%),var(--ph2) center 45%/cover!important}
 .v2-fiches{background:linear-gradient(90deg,rgba(251,246,238,.88) 0%,rgba(251,246,238,.76) 55%,rgba(251,246,238,.62) 100%),var(--ph3) center 40%/cover!important}
+.ck{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:80;max-width:560px;margin:0 auto;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;padding:14px 16px;border-radius:18px;background:#fbf6ee;border:1px solid rgba(80,55,20,.14);box-shadow:0 14px 36px rgba(60,40,20,.22);font-size:14px;line-height:1.45;color:var(--ivoire)}
+.ck[hidden]{display:none}.ck p{margin:0;flex:1 1 260px}.ck a{color:inherit}.ck div{display:flex;gap:8px}
+.ck button{min-height:40px;padding:0 16px;border-radius:999px;font:600 14px/1 inherit;cursor:pointer;border:1.5px solid rgba(74,52,38,.3);background:transparent;color:var(--navy)}.ck .ck-oui{background:var(--navy);color:#fbf6ee;border-color:var(--navy)}
 /* mobile plus agréable (Simon, 22/11/2026) : barre d'action, carrousels */
 .g-note{display:inline-flex;gap:6px;align-items:center;margin-top:12px;font-size:14px;font-weight:600;color:#efe4d0!important;text-decoration:none!important}.g-note span{color:#e3b04b;letter-spacing:1px}
 .barre-mob{display:none}
