@@ -32,3 +32,12 @@
     if(!a||!window.goatcounter||!window.goatcounter.count)return;var n=nom(a.getAttribute('href'));
     window.goatcounter.count({path:n,title:n,event:true});},true);
 })();
+/* Malakoff : clics Doctolib / téléphone des visiteurs venus d'une annonce Google (gclid), comptés sans cookie */
+(function(){
+  var K='mk_pub',v=null;try{if(/[?&](gclid|gbraid|wbraid)=/.test(location.search)){v=/rdv-orthodontie/.test(location.pathname)?'ortho':/rdv-parodontie/.test(location.pathname)?'paro':'générale';sessionStorage.setItem(K,v)}else v=sessionStorage.getItem(K)}catch(e){}
+  if(!v)return;
+  function c(n){if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:n,title:n,event:true})}
+  c('Pub '+v+' : visite');
+  document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';
+    if(/^tel:/.test(h))c('Pub '+v+' : clic téléphone');else if(/doctolib[.]fr/.test(h))c('Pub '+v+' : clic Doctolib');},true);
+})();
