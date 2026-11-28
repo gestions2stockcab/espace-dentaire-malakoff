@@ -714,6 +714,7 @@ section.soins-fond{background:linear-gradient(180deg,rgba(243,234,219,.88) 0%,rg
 .ck{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:80;max-width:560px;margin:0 auto;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;padding:14px 16px;border-radius:18px;background:#fbf6ee;border:1px solid rgba(80,55,20,.14);box-shadow:0 14px 36px rgba(60,40,20,.22);font-size:14px;line-height:1.45;color:var(--ivoire)}
 .ck[hidden]{display:none}.ck p{margin:0;flex:1 1 260px}.ck a{color:inherit}.ck div{display:flex;gap:8px}
 .ck button{min-height:40px;padding:0 16px;border-radius:999px;font:600 14px/1 inherit;cursor:pointer;border:1.5px solid rgba(74,52,38,.3);background:transparent;color:var(--navy)}.ck .ck-oui{background:var(--navy);color:#fbf6ee;border-color:var(--navy)}
+@media(max-width:600px){.ck{left:8px;right:8px;padding:9px 12px;gap:6px 10px;font-size:12.5px;line-height:1.35;border-radius:14px;bottom:calc(8px + env(safe-area-inset-bottom))}.ck p{margin:0;flex:1 1 100%}.ck div{display:flex;gap:8px;margin-left:auto}.ck button{min-height:34px;padding:0 14px;font-size:13px}body.barre-on .ck{bottom:calc(74px + env(safe-area-inset-bottom))}}
 /* mobile plus agréable (Simon, 22/11/2026) : barre d'action, carrousels */
 .g-note{display:inline-flex;gap:6px;align-items:center;margin-top:12px;font-size:14px;font-weight:600;color:#efe4d0!important;text-decoration:none!important}.g-note span{color:#e3b04b;letter-spacing:1px}
 .barre-mob{display:none}
