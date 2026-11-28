@@ -5,7 +5,22 @@
   "description": "L’accueil de l’Espace dentaire Malakoff"
  },
  {
+  "fichier": "05-sterilisation.jpg",
+  "categorie": "INTERIOR",
+  "description": "La salle de stérilisation"
+ },
+ {
   "fichier": "02-salle-de-soins.jpg",
+  "categorie": "INTERIOR",
+  "description": "Une salle de soins"
+ },
+ {
+  "fichier": "07-entree-et-salle-d-attente.jpg",
+  "categorie": "INTERIOR",
+  "description": "L’entrée et la salle d’attente"
+ },
+ {
+  "fichier": "06-salle-de-soins-cabinet-5.jpg",
   "categorie": "INTERIOR",
   "description": "Une salle de soins"
  },
@@ -13,6 +28,11 @@
   "fichier": "03-couloir-des-cabinets.jpg",
   "categorie": "INTERIOR",
   "description": "Le couloir des cabinets"
+ },
+ {
+  "fichier": "08-espace-d-attente.jpg",
+  "categorie": "INTERIOR",
+  "description": "Un espace d’attente"
  },
  {
   "fichier": "04-cabinets.jpg",
