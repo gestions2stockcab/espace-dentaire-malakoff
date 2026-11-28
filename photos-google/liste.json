@@ -38,5 +38,10 @@
   "fichier": "04-cabinets.jpg",
   "categorie": "INTERIOR",
   "description": "Les cabinets"
+ },
+ {
+  "fichier": "09-accueil-bureau.jpg",
+  "categorie": "INTERIOR",
+  "description": "Le bureau d’accueil"
  }
 ]
