@@ -15,6 +15,11 @@
   "description": "Une salle de soins"
  },
  {
+  "fichier": "09-accueil-bureau.jpg",
+  "categorie": "INTERIOR",
+  "description": "L’accueil de l’Espace dentaire Malakoff"
+ },
+ {
   "fichier": "07-entree-et-salle-d-attente.jpg",
   "categorie": "INTERIOR",
   "description": "L’entrée et la salle d’attente"
@@ -38,10 +43,5 @@
   "fichier": "04-cabinets.jpg",
   "categorie": "INTERIOR",
   "description": "Les cabinets"
- },
- {
-  "fichier": "09-accueil-bureau.jpg",
-  "categorie": "INTERIOR",
-  "description": "Le bureau d’accueil"
  }
 ]
